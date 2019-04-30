@@ -21,7 +21,15 @@ public class MyStartedService extends Service {
         Log.i(TAG, "onStartCommand, Thread name " + Thread.currentThread().getName());
 
         // Perform Tasks [ Short Duration Task: Don't block the UI ]
-        return super.onStartCommand(intent, flags, startId);
+
+        int sleepTime = intent.getIntExtra("sleepTime", 1);
+        try {
+            Thread.sleep(sleepTime * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return START_STICKY;
     }
 
     @Nullable
