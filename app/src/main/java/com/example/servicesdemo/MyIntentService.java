@@ -21,6 +21,21 @@ public class MyIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Log.i(TAG, "onHandleIntent, Thread name: " + Thread.currentThread().getName());
+
+        int sleepTime = intent.getIntExtra("sleepTime", 1);
+
+        int ctr = 1;
+
+        //Dummy Long Operation
+        while (ctr <= sleepTime) {
+            Log.i(TAG, "Counter is now  "+ ctr);
+            try {
+                Thread.sleep(sleepTime * 10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            ctr++;
+        }
     }
 
     @Override
