@@ -2,7 +2,11 @@ package com.example.servicesdemo;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 import android.util.Log;
+
+import javax.xml.transform.Result;
 
 public class MyIntentService extends IntentService {
 
@@ -24,11 +28,13 @@ public class MyIntentService extends IntentService {
 
         int sleepTime = intent.getIntExtra("sleepTime", 1);
 
+        ResultReceiver resultReceiver = intent.getParcelableExtra("receiver");
+
         int ctr = 1;
 
         //Dummy Long Operation
         while (ctr <= sleepTime) {
-            Log.i(TAG, "Counter is now  "+ ctr);
+            Log.i(TAG, "Counter is now  " + ctr);
             try {
                 Thread.sleep(sleepTime * 10);
             } catch (InterruptedException e) {
@@ -36,6 +42,10 @@ public class MyIntentService extends IntentService {
             }
             ctr++;
         }
+
+        Bundle bundle = new Bundle();
+        bundle.putString("resultIntentService", "Counter stopped at " + ctr + " seconds");
+        resultReceiver.send(18, bundle);
     }
 
     @Override

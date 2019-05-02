@@ -29,6 +29,17 @@
         android:onClick="stopStartedService"
         android:text="Stop the Started Service"/>
 
+
+    <TextView
+        android:id="@+id/tvStartedServiceResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnStopStartedService"
+        android:text="Started Service Result Here"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"/>
+
     <Button
         android:id="@+id/btnStartIntentService"
         android:layout_width="match_parent"
@@ -37,5 +48,15 @@
         android:layout_below="@id/btnStopStartedService"
         android:onClick="startIntentService"
         android:text="Start Intent Service"/>
+
+    <TextView
+        android:id="@+id/tvIntentServiceResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnStartIntentService"
+        android:text="Intent Service Result Here"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"/>
 
 </RelativeLayout>
